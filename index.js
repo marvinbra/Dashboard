@@ -38,6 +38,7 @@ fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
     
     setInterval(renderTime, 1000)
 
+    // HEIDELBERG
 fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=49.398750&lon=8.672434&units=metric`)
     .then(res => {
         if (!res.ok) {
@@ -48,7 +49,26 @@ fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=49.398750&lo
     .then(data => {
         console.log(data)
         const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-        document.getElementById("weather").innerHTML = `
+        document.querySelector("#weather").innerHTML = `
+            <img src=${iconUrl} />
+            <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+            <p class="weather-city">${data.name}</p>
+        `
+    })
+    .catch(err => console.error(err))
+
+    // FORTALEZA 
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=-3.731862&lon=-38.526669&units=metric`)
+    .then(res => {
+        if (!res.ok) {
+            throw Error("Weather data not available")
+        }
+        return res.json()
+    })
+    .then(data => {
+        console.log(data)
+        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        document.querySelector("#weather-fortal").innerHTML = `
             <img src=${iconUrl} />
             <p class="weather-temp">${Math.round(data.main.temp)}º</p>
             <p class="weather-city">${data.name}</p>

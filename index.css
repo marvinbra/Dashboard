@@ -51,7 +51,8 @@ div#crypto-top > span {
     margin-left: 10px;
 }
 
-div#weather {
+div#weather,
+#weather-fortal {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -60,6 +61,10 @@ div#weather {
 }
 
 div#weather > img {
+    width: 70px;
+}
+
+div#weather-fortal > img {
     width: 70px;
 }
 
