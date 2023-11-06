@@ -10,6 +10,59 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 		document.getElementById("author").textContent = `By: Dodi Achmad`
     })
 
+    function renderTime() {
+        const date = new Date()
+        const currentTime = date.toLocaleTimeString("en-us", {timeStyle: "short"})
+        document.getElementById("time").textContent = `${currentTime}`
+    }
+    
+    setInterval(renderTime, 1000)
+
+// API NOT WORKING
+//fetch("https://api.exchangeratesapi.io/v1/latest?access_key=12bfa34be16d11b25bb5537957bc9c81")
+//    .then(res => res.json())
+//    .then(data => console.log(data))
+
+
+    // HEIDELBERG
+
+fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=49.398750&lon=8.672434&units=metric`)
+    .then(res => {
+        if (!res.ok) {
+            throw Error("Weather data not available")
+        }
+        return res.json()
+    })
+    .then(data => {
+        console.log(data)
+        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        document.querySelector("#weather").innerHTML = `
+            <img src=${iconUrl} />
+            <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+            <p class="weather-city">${data.name}</p>
+        `
+    })
+    .catch(err => console.error(err))
+
+    // FORTALEZA 
+fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=-3.731862&lon=-38.526669&units=metric`)
+    .then(res => {
+        if (!res.ok) {
+            throw Error("Weather data not available")
+        }
+        return res.json()
+    })
+    .then(data => {
+        console.log(data)
+        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        document.querySelector("#weather-fortal").innerHTML = `
+            <img src=${iconUrl} />
+            <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+            <p class="weather-city">${data.name}</p>
+        `
+    })
+    .catch(err => console.error(err))
+
 fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
     .then(res => {
         if (!res.ok) {
@@ -30,48 +83,3 @@ fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
     })
     .catch(err => console.error(err))
 
-    function renderTime() {
-        const date = new Date()
-        const currentTime = date.toLocaleTimeString("en-us", {timeStyle: "short"})
-        document.getElementById("time").textContent = `${currentTime}`
-    }
-    
-    setInterval(renderTime, 1000)
-
-    // HEIDELBERG
-fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=49.398750&lon=8.672434&units=metric`)
-    .then(res => {
-        if (!res.ok) {
-            throw Error("Weather data not available")
-        }
-        return res.json()
-    })
-    .then(data => {
-        console.log(data)
-        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-        document.querySelector("#weather").innerHTML = `
-            <img src=${iconUrl} />
-            <p class="weather-temp">${Math.round(data.main.temp)}º</p>
-            <p class="weather-city">${data.name}</p>
-        `
-    })
-    .catch(err => console.error(err))
-
-    // FORTALEZA 
-    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=-3.731862&lon=-38.526669&units=metric`)
-    .then(res => {
-        if (!res.ok) {
-            throw Error("Weather data not available")
-        }
-        return res.json()
-    })
-    .then(data => {
-        console.log(data)
-        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-        document.querySelector("#weather-fortal").innerHTML = `
-            <img src=${iconUrl} />
-            <p class="weather-temp">${Math.round(data.main.temp)}º</p>
-            <p class="weather-city">${data.name}</p>
-        `
-    })
-    .catch(err => console.error(err))
