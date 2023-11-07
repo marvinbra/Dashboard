@@ -31,6 +31,7 @@ h1.time {
     text-align: center;
     color: black;
     text-shadow: 0px 0px 20px rgb(204, 187, 187);
+    font-size: 2.5rem;
 }
 
 div#crypto {
@@ -51,32 +52,41 @@ div#crypto-top > span {
     margin-left: 10px;
 }
 
+.weather-background {
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    border-radius: 10px;
+    padding-bottom: 1em;
+}
+
 div#weather,
 #weather-fortal {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    align-self: flex-start;
+    justify-content: center;
+    vertical-align: middle;
 }
 
 div#weather > img {
-    width: 70px;
+    width: 80px;
 }
 
 div#weather-fortal > img {
-    width: 70px;
+    width: 80px;
 }
 
 p.weather-city {
     width: 100%;
-    text-align: right;
+    text-align: center;
     margin: 0;
     margin-top: -10px;
+    font-size: 1.2rem;
 }
 
 p.weather-temp {
     margin: 0;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     margin-left: -10px;
 }
